@@ -45,7 +45,8 @@ def export_posts(user_id):
                    html_body=render_template('email/export_posts.html',
                                              user=user),
                    attachments=[('posts.json', 'application/json',
-                                 json.dumps({'posts': data}, indent=4))], sync=True)
+                                 json.dumps({'posts': data}, indent=4))],
+                                 sync=True)
     except User.DoesNotExist:
         _set_task_progress(100)
         app.logger.error('Unhandled exception', exc_info=sys.exc_info())
